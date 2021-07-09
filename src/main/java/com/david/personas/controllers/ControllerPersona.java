@@ -1,4 +1,4 @@
-package com.david.personas.rest;
+package com.david.personas.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +19,7 @@ import com.david.personas.models.Persona;
 @RestController
 @RequestMapping("personas")
 
-public class Controllers {
+public class ControllerPersona {
 
 	@Autowired
 	private PersonasDAO personasDAO;

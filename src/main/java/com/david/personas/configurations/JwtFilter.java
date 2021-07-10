@@ -21,6 +21,7 @@ public class JwtFilter extends GenericFilterBean{
 		Authentication authentication = JwtUtil.getAuthentication((HttpServletRequest) request); 
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+
 		
 		chain.doFilter(request, response);
 	}

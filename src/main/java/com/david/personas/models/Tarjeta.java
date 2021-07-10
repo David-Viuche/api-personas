@@ -13,32 +13,31 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-@Table(name="tarjetas")
+@Table(name = "tarjetas")
 
 public class Tarjeta {
-	@Id   
+	@Id
 	@Column(name = "id_tarjeta")
-	@GeneratedValue(generator="seq_id_tarjeta")
-	@SequenceGenerator(name="seq_id_tarjeta", sequenceName="SEQ_ID_TARJETA", allocationSize=1)
+	@GeneratedValue(generator = "seq_id_tarjeta")
+	@SequenceGenerator(name = "seq_id_tarjeta", sequenceName = "SEQ_ID_TARJETA", allocationSize = 1)
 	private long id_tarjeta;
-	
-	@Column(name="numero", nullable = false, length = 20)
+
+	@Column(name = "numero", nullable = false, length = 20)
 	private String numero;
-	
-	@Column(name="fecha_vencimiento", nullable = false)
+
+	@Column(name = "fecha_vencimiento", nullable = false)
 	private Date fecha_vencimiento;
-	
-	@Column(name="ccv", nullable = false, length = 3)
+
+	@Column(name = "ccv", nullable = false, length = 3)
 	private int ccv;
-	
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_persona")
+
+	@ManyToOne()
+	@JoinColumn(name = "id_persona")
+	@JsonBackReference
 	private Persona persona;
-//    private University university;
-//	
-//	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    
 
 	public long getId_tarjeta() {
 		return id_tarjeta;
@@ -79,5 +78,5 @@ public class Tarjeta {
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
-	
+
 }

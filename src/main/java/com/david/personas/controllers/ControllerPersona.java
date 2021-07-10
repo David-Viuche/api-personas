@@ -14,16 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.david.personas.daos.PersonasDAO;
-import com.david.personas.daos.TarjetasDAO;
 import com.david.personas.models.Persona;
 
 @RestController
 @RequestMapping("personas")
 
 public class ControllerPersona {
-
-	@Autowired
-	private TarjetasDAO tarjetasDAO;
 	
 	@Autowired
 	private PersonasDAO personasDAO;
@@ -38,11 +34,6 @@ public class ControllerPersona {
 		Optional<Persona> optionalPersona = personasDAO.findById(id_persona);
 		
 		if (optionalPersona.isPresent()) {
-			
-//			Persona persona = optionalPersona.get();
-//			
-//			Optional<Persona> optionalPersonatarjetasDAO.findByIdPersona(persona.getId_persona());
-			
 			return ResponseEntity.ok(optionalPersona.get());
 		} else {
 			return ResponseEntity.notFound().build();

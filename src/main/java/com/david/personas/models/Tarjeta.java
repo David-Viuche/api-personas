@@ -1,11 +1,8 @@
 package com.david.personas.models;
 
-import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -28,8 +25,11 @@ public class Tarjeta {
 	@Column(name = "numero", nullable = false, length = 20)
 	private String numero;
 
-	@Column(name = "fecha_vencimiento", nullable = false)
-	private Date fecha_vencimiento;
+	@Column(name = "anio_vencimiento", nullable = false)
+	private int anio_vencimiento;
+	
+	@Column(name = "mes_vencimiento", nullable = false)
+	private int mes_vencimiento;
 
 	@Column(name = "ccv", nullable = false, length = 3)
 	private int ccv;
@@ -55,12 +55,20 @@ public class Tarjeta {
 		this.numero = numero;
 	}
 
-	public Date getFecha_vencimiento() {
-		return fecha_vencimiento;
+	public int getAnio_vencimiento() {
+		return anio_vencimiento;
 	}
 
-	public void setFecha_vencimiento(Date fecha_vencimiento) {
-		this.fecha_vencimiento = fecha_vencimiento;
+	public void setAnio_vencimiento(int anio_vencimiento) {
+		this.anio_vencimiento = anio_vencimiento;
+	}
+
+	public int getMes_vencimiento() {
+		return mes_vencimiento;
+	}
+
+	public void setMes_vencimiento(int mes_vencimiento) {
+		this.mes_vencimiento = mes_vencimiento;
 	}
 
 	public int getCcv() {
